@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %} Start {% endblock %}
+
+{% block content %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/start">Upload your excel file to start analysis</a>
+                </div>
+            </nav>
+
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </symbol>
+            </svg>
+            {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                {{ message }} 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endwith %}
+
+            <div class="alert alert-secondary fade show pt-2 preface" style="position: fixed; width: 800px; height: 600px; z-index: 50; left: 50%; transform: translate(-50%, 2%); {{'display: none;' if error else ''}}">
+                <span style="width: 100%;"><button type="button" class="btn btn-secondary preface-close" data-dismiss="alert" style="float: right;">&times;</button></span>
+                <nav style="margin-top: 25px;">
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Welcome</button>
+                      <button class="nav-link" id="nav-help-tab" data-bs-toggle="tab" data-bs-target="#nav-help" type="button" role="tab" aria-controls="nav-help" aria-selected="false">Help</button>
+                    </div>
+                </nav>
+                <div class="tab-content border-start border-bottom border-end rounded" style="height: 510px; background-color: white;" id="nav-tabContent">
+                    <div class="tab-pane fade show active alert-primary" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <img src="{{url_for('static', filename='logo.png')}}" style="width: 100%; height: 500px;">
+                    </div>
+                    <div class="tab-pane fade p-3" id="nav-help" role="tabpanel" style="height: 500px; overflow: scroll; overflow-x: hidden;" aria-labelledby="nav-help-tab">
+                        <h4>How to use the system: </h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Start by uploading the excel file and clicking Analyze
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img class="border rounded" src="{{url_for('static', filename='start.png')}}" style="width: 325px; height: 200px;">
+                                    </div>
+                                    <div class="col-6">
+                                        <img class="border rounded"  src="{{url_for('static', filename='browse.png')}}" style="width: 325px; height: 200px;">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">It takes about 90 minutes for the evaluation to complete. Closing the panel anytime will abort the process
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img class="border rounded"  src="{{url_for('static', filename='loading.png')}}" style="width: 325px; height: 200px;">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">Once the evaluation completes, it will redirect to the selected questions for Depression. You can view results for Anxiety, Stress, and Sleep Quality by clicking the respective links</li>
+                            <li class="list-group-item">The color labels on the left indicate which algorithm selected the question. Clicking buttons with the same colors at the top will filter the questions accordingly</li>
+                            <li class="list-group-item">The Model Performance tab shows the model scores for each aspect on each classifier</li>
+                            <li class="list-group-item">The Correlations tab shows the Bayesian correlation of one aspect to another</li>
+                            <li class="list-group-item">Click Return at the top-right corner to go back to the Start page
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img class="border rounded"  src="{{url_for('static', filename='stats.png')}}" style="width: 325px; height: 200px;">
+                                    </div>
+                                    <div class="col-6">
+                                        <img class="border rounded"  src="{{url_for('static', filename='bayes.png')}}" style="width: 325px; height: 200px;">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-secondary fade show row pt-2 loading" style="position: fixed; width: 500px; height: 200px; z-index: 50; left: 50%; transform: translate(-50%, 10%); display: none;">
+                <span><button type="button" class="btn btn-secondary close" data-dismiss="alert" style="float: right;">&times;</button></span>
+                <div class="col-1"></div>
+                <div class="col-1"><div class="spinner-border" role="status"></div></div>
+                <div class="col-8"><p class="lead" style="margin-left: 20px;">Analysis on-going. Please wait...</p></div>
+                <div class="col-1"></div>
+                <div class="col-1"></div>
+                <div class="progress p-0" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+                </div>
+                <h6 style="text-align: center;">This process takes about 90 minutes to complete.</h6>
+            </div>
+            <div class="container">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="input-group m-5">
+                        <input class="form-control" type="file" name="file" accept=".xlsx">
+                        <button class="btn btn-outline-secondary" type="submit" id="submit">ANALYZE</button>
+                    </div>
+                </form>
+            </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $("#submit").click(function () {
+                        $("div.loading").show();
+                    });
+
+                    $("button.preface-close").click(function () {
+                        $("div.preface").hide();
+                    });
+
+                    $("button.close").click(function () {
+                        window.location.replace("/start");
+                    });
+                });
+
+                var myVar
+                function make_request(){
+                    let request = new XMLHttpRequest();
+                    request.open("GET", "/progress");
+                    request.send();
+                    request.onload = () => {
+                        if (request.status == 200) {
+                            var percentage_complete = parseInt(request.response);
+                            $("div.progress-bar").css("width", percentage_complete + "%");
+                            if (percentage_complete == 100) {
+                                clearInterval(window.myVar);
+                                window.location.replace("/results?subset=DEPRESSION");
+                            }
+                        } else {
+                            console.log(`error ${request.status} ${request.statusText}`);
+                        }
+                    }
+                }
+
+                $(document).on("submit", "form", function(event) {
+                    window.myVar = setInterval("make_request()", 10000);
+                });
+            </script>         
+{% endblock %}

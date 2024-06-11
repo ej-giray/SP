@@ -1,0 +1,60 @@
+During the past four weeks, how long has it usually taken you to fall asleep each night? (Number of minutes)
+During the past four weeks, how many hours of actual sleep did you get at night?
+Sleep efficiency
+How often have you had trouble sleeping because you [Cannot get to sleep within 30 minutes]
+How often have you had trouble sleeping because you [Wake up in the middle of the night or early morning]
+How often have you had trouble sleeping because you [Have to get up to use the bathroom]
+How often have you had trouble sleeping because you [Cannot breathe comfortably]
+How often have you had trouble sleeping because you [Cough or snore loudly]
+How often have you had trouble sleeping because you [Feel too cold]
+How often have you had trouble sleeping because you [Feel too hot]
+How often have you had trouble sleeping because you [Had bad dreams]
+How often have you had trouble sleeping because you [Have pain]
+How often have you had trouble sleeping because of other reasons?
+(How often have you had trouble sleeping because of other reasons?) For what reason?
+During the past month, how would you rate your sleep quality overall?
+How often: [Have you taken medicine (prescribed or over the counter) to help you sleep]
+How often: [Have you had trouble staying awake while driving, eating meals, or engaging in social activity]
+How often: [Have you had too little energy to perform daily duties]
+During the past four weeks, how much of a problem has it been for you to keep up enough enhusiasm to get things done?
+Are you sleeping alone in your room?
+If you have a roommate or bed partner, ask him/her how often BEFORE the pandemic have you had [Loud snoring]
+If you have a roommate or bed partner, ask him/her how often BEFORE the pandemic have you had [Long pauses between breaths while asleep]
+If you have a roommate or bed partner, ask him/her how often BEFORE the pandemic have you had [Legs twitching or jerking while you sleep]
+If you have a roommate or bed partner, ask him/her how often BEFORE the pandemic have you had [Episodes of disorientation or confusion during sleep]
+On average, how much time daily do you spend in front of electronic devices? (in hours)
+How much time a day do you spend on STUDY-related things (online classes) in front of electronic devices? (in hours)
+How often have you consumed energy drinks before the pandemic? [Coffee]
+How often have you consumed energy drinks before the pandemic? [Tea]
+How often have you consumed energy drinks before the pandemic? [Beverages like coke]
+How often have you consumed energy drinks before the pandemic? [Energy drinks]
+How long (in minutes) has it usually taken you to fall asleep each night BEFORE the pandemic? (Number of minutes)
+How many hours of actual sleep do you usually get at night BEFORE the pandemic?
+Sleep efficiency BEFORE the pandemic
+BEFORE the pandemic, how often have you had trouble sleeping because you [Couldn't get to sleep within 30 minutes]
+BEFORE the pandemic, how often have you had trouble sleeping because you [Woke up in the middle of the night or early morning]
+BEFORE the pandemic, how often have you had trouble sleeping because you [Had to get up to use the bathroom]
+BEFORE the pandemic, how often have you had trouble sleeping because you [Couldn't breathe comfortably]
+BEFORE the pandemic, how often have you had trouble sleeping because you [Cough or snore loudly]
+BEFORE the pandemic, how often have you had trouble sleeping because you [Felt too cold]
+BEFORE the pandemic, how often have you had trouble sleeping because you [Felt too hot]
+BEFORE the pandemic, how often have you had trouble sleeping because you [Had bad dreams]
+BEFORE the pandemic, how often have you had trouble sleeping because you [Had pain]
+How often have you had trouble sleeping BEFORE the pandemic because of other reasons?
+(How often have you had trouble sleeping BEFORE the pandemic because of other reasons?) For what reason?
+BEFORE the pandemic how would you rate your sleep quality overall?
+BEFORE the pandemic, how often: [Have you taken medicine (prescribed or over the counter) to help you sleep]
+BEFORE the pandemic, how often: [Have you had trouble staying awake while driving, eating meals, or engaging in social activity]
+BEFORE the pandemic, how often: [Have you had too little energy to perform daily duties]
+BEFORE the pandemic, how much of a problem has it been for you to keep up enough enthusiasm to get things done?
+Were you sleeping alone in your room before the pandemic?
+If you have a roommate or bed partner, ask him/her how often BEFORE the pandemic have you had [Loud snoring]
+If you have a roommate or bed partner, ask him/her how often BEFORE the pandemic have you had [Long pauses between breaths while asleep]
+If you have a roommate or bed partner, ask him/her how often BEFORE the pandemic have you had [Legs twitching or jerking while you sleep]
+If you have a roommate or bed partner, ask him/her how often BEFORE the pandemic have you had [Episodes of disorientation or confusion during sleep]
+On average, how much time daily do you spend in front of electronic devices BEFORE the pandemic? (in hours)
+How much time a day BEFORE the pandemic did you spend on STUDY-related things (online classes) in front of electronic devices? (in hours)
+How often have you consumed energy drinks before the pandemic? [Coffee]
+How often have you consumed energy drinks before the pandemic? [Tea]
+How often have you consumed energy drinks before the pandemic? [Beverages like coke]
+How often have you consumed energy drinks before the pandemic? [Energy drinks (e.g. Red-Bull, Burn)]

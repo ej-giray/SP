@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %} Results {% endblock %}
+
+{% block content %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="navbar-nav">
+                    {% for subset in subsets %}
+                    <a class="nav-item nav-link" id="{{subset}}" href="/results?subset={{subset}}">{{subset}}</a>
+                    {% endfor %}
+                </div>
+                <span style="width: 100%; padding-right: 10px;">
+                    <button type="button" class="btn btn-secondary return" style="float: right;">RETURN</button>
+                </span>
+            </nav>
+
+            <div class="bg-light loading" style="position: fixed; width: 1500px; height: 675px; z-index: 100; left: 50%; transform: translate(-50%, 0%)">
+                <div class="row" style="position: relative; width: 400px; height: 20px; left: 50%; margin-top: 100px; transform: translate(-50%, 0%);">
+                    <div class="col-1"><div class="spinner-border" role="status"></div></div>
+                    <div class="col-11"><p class="lead" style="margin-left: 20px;">Rendering charts. Please wait...</p></div>
+                </div>
+            </div>
+            {% for item, details in attributes['ALL'].items() %}
+            <div class="alert alert-secondary fade show charts {{item}}" style="position: fixed; width: 800px; height: 600px; z-index: 50; left: 50%; transform: translate(-50%, 10%);">
+                <button type="button" class="btn btn-secondary close" data-dismiss="alert" style="float: right;">&times;</button>
+                <h4 style="text-align: center;"><span class="badge rounded-pill bg-light text-dark">{{details[0]}}</span> {{details[1]}}</h4>
+                Selected by: 
+                {% for filter in attributes.keys() %}
+                {% if filter != 'ALL' %}
+                {% if item in attributes[filter] %}
+                <span class="badge rounded-pill bg-light text-dark"> {{filter_alias[filter]}} - {{attributes[filter][item]}}</span>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                <div class="row mt-5" style="width: 770px; margin-left: 0px;">
+                    <div class="col-6">
+                        <div id="{{item}}_NORMAL"></div>
+                    </div>
+                    <div class="col-6">
+                        <div id="{{item}}_POSSIBLE"></div>
+                    </div>
+                </div>
+                <h6 style="position: absolute; bottom: 0;"> * Hover on each section to see responses </h6>
+            </div>
+            {% endfor %}
+            <div class="pt-3 tab-content" style="width:1500px; margin:0 auto;">
+                <div class="row">
+                    <div class="col-7">
+                        <h3>Selected Questions ranked by Importance Scores</h3>
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            {% for filter in attributes.keys() %}
+                            {% if filter != 'ALL' %}
+                                <button class="nav-link {{'active' if filter == 'CFS' else ''}}" id="nav-{{filter}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{filter}}" type="button" role="tab" aria-controls="nav-{{filter}}" aria-selected="true">
+                                    {{filter_alias[filter]}} <span class="badge bg-light text-dark">{{attributes[filter]|length}}</span>
+                                </button>
+                            {% endif %}
+                            {% endfor %}
+                            </div>
+                        </nav>
+                        <div class="tab-content border-start border-bottom border-end p-2" style="height: 605px" id="nav-tabContent">
+                            {% for filter in attributes.keys() %}
+                            {% if filter != 'ALL' %}
+                            <div class="tab-pane fade show {{'active' if filter == 'CFS' else ''}}" style="height: 590px; overflow: scroll; overflow-x: hidden" id="nav-{{filter}}" role="tabpanel" aria-labelledby="nav-{{filter}}-tab">
+                                <table>
+                                    {% for feature, score in attributes[filter].items() %}
+                                    <tr>
+                                        <td>
+                                            <button name={{feature}} type="button" class="btn btn-light ml-2 question" style="width: 815px; text-align: left">
+                                                <span class="badge bg-info">{{'%.2f'|format(score)}}</span>
+                                                <span class="badge rounded-pill bg-light text-dark">{{attributes['ALL'][feature][0]}}</span> {{attributes['ALL'][feature][1]}}
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                              <button class="nav-link active" id="nav-model-tab" data-bs-toggle="tab" data-bs-target="#nav-model" type="button" role="tab" aria-controls="nav-model" aria-selected="true">Model Performance</button>
+                              <button class="nav-link" id="nav-bayes-tab" data-bs-toggle="tab" data-bs-target="#nav-bayes" type="button" role="tab" aria-controls="nav-bayes" aria-selected="false">Cross-relations with other Subsets</button>
+                            </div>
+                        </nav>
+                        <div class="tab-content border-start border-bottom border-end" style="height: 605px" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-model" role="tabpanel" aria-labelledby="nav-model-tab">
+                                <div class="row">
+                                    <div class="col-6 p-0">
+                                        <div id="ACCURACY"></div>
+                                        <div id="RECALL"></div>
+                                    </div>
+                                    <div class="col-6 p-0">
+                                        <div id="PRECISION"></div>
+                                        <div id="F1_SCORE"></div>
+                                    </div>    
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show active pt-3" id="nav-bayes" role="tabpanel" aria-labelledby="nav-bayes-tab">
+                                <div id="bayesian"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/billboard.js/dist/theme/datalab.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.pkgd.js"></script>
+            <script>                
+                function generate_chart(label, title, type, y_values, x_values, groups, rotated, show_legend) {
+                    var chart = bb.generate({
+                        title: {
+                            text: title,
+                            padding: {
+                                top: 10, 
+                                bottom: 30
+                            }	
+                        },
+                        data: {
+                            columns: y_values,
+                            groups: groups,
+                            type: type,
+                            colors: {
+                                "ALL": "#6c757d",
+                                "CFS": "#0d6efd",
+                                "HNET": "#198754",
+                                "DALEX": "#dc3545"
+                            }
+                        },
+                        axis: {
+                            rotated: rotated,
+                            y: {
+                                max: 89.99,
+                                tick: {
+                                    format: function(d) {
+                                        return d + "%";
+                                    }
+                                }
+                            },
+                            x: {
+                                type: "category",
+                                categories: x_values,
+                                label: {
+                                    position: "inner-center"
+                                }
+                            }
+                        },
+                        legend: {
+                            show : show_legend
+                        },
+                        bindto: label
+                    });
+                    return chart;
+                }
+
+                {% for metric, desc in metrics.items() %}
+                chart = generate_chart("#{{metric}}", "{{desc['title']}}", "bar", {{desc['y_values']|safe}}, ["Random Forest", "Naive Bayes", "Support Vector", "Logistic"], [], false, true)
+                chart.resize({width: 304, height: 300})
+                {% endfor %}
+
+                chart = generate_chart("#bayesian", "Probability of having {{subset}} class given X", "bar", {{bayesian['y_values']|safe}}, {{bayesian['x_values']|safe}}, {{bayesian['groups']|safe}}, true, true)
+
+                {% for column, group in dists.items() %}
+                generate_chart("#{{column}}_NORMAL", "NORMAL", "donut", {{group['Normal']|safe}}, [], 300, 200, false)
+                generate_chart("#{{column}}_POSSIBLE", "{{ 'POSSIBLE' if subset != 'SLEEP' else 'POOR' }} {{subset}}", "donut", {{group['Possible']|safe}}, [], [], false, false)
+                {% endfor %}
+
+                $(document).ready(function() {
+                    $("div.charts").hide();
+                    $("div.loading").hide();
+
+                    $("button.return").click(function() {
+                        window.location.replace("/start");
+                    });
+
+                    $("button.question").click(function () {
+                        $("div.charts").hide();
+                        $(".".concat(this.name)).show();
+                    });
+
+                    $("button.close").click(function () {
+                        $(this).parent().hide();
+                    });
+                });
+            </script>
+{% endblock %}

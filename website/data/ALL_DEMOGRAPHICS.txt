@@ -1,0 +1,60 @@
+Gender
+Age
+Field of study
+Year of study
+Do you need to pay for your university in your country?
+Do you pay for your university?
+How do you currently study at your university (during this semester)?
+Place of residence
+Marital status
+Do you have children?
+I live (with):
+Did you work while studying before the pandemic?
+Are you currently working?
+How do you assess your economic situation during the pandemic?
+What is your height? (in centimeters)
+What was your weight before the pandemic? (in kilograms)
+What is your weight now? (in kilograms)
+(Are you being treated for chronic disease?) I don�t have any chronic diseases
+(Are you being treated for chronic disease?) Asthma
+(Are you being treated for chronic disease?) Allergies
+(Are you being treated for chronic disease?) Dermatologic diseases
+(Are you being treated for chronic disease?) Gastroenterology diseases
+(Are you being treated for chronic disease?) Neurological diseases
+(Are you being treated for chronic disease?) Thyroid diseases
+(Are you being treated for chronic disease?) Cardiovascular diseases
+(Are you being treated for chronic disease?) Psychiatric conditions
+(Are you being treated for chronic disease?) Sleep disturbances/sleep-awakening diseases
+(Are you being treated for chronic disease?) Carbohydrate disorders
+(Are you being treated for chronic disease?) Other
+(Did any of your relatives/friends get COVID-19?) No
+(Did any of your relatives/friends get COVID-19?) Yes, first degree relatives (parents/children)
+(Did any of your relatives/friends get COVID-19?) Yes, distant relatives
+(Did any of your relatives/friends get COVID-19?) Yes, friend/s
+(Did any of your relatives/friends get COVID-19?) I don't know
+Did you get COVID-19?
+(Did any of your relatives/friends die of COVID-19?) No
+(Did any of your relatives/friends die of COVID-19?) Yes, first degree relatives (parents/children)
+(Did any of your relatives/friends die of COVID-19?) Yes, distant relatives
+(Did any of your relatives/friends die of COVID-19?) Yes, friend/s
+Did you use psychological/psychiatric services before the pandemic broke out?
+(Did you use psychological/psychiatric services before the pandemic broke out?) I did not use such services
+(Did you use psychological/psychiatric services before the pandemic broke out?) Stress
+(Did you use psychological/psychiatric services before the pandemic broke out?) Personality disorders
+(Did you use psychological/psychiatric services before the pandemic broke out?) Anxiety disorders
+(Did you use psychological/psychiatric services before the pandemic broke out?) Eating disorders
+(Did you use psychological/psychiatric services before the pandemic broke out?) Sleep disturbances/sleep disorders
+(Did you use psychological/psychiatric services before the pandemic broke out?) Mood disorders
+(Did you use psychological/psychiatric services before the pandemic broke out?) Psychotic disorders
+(Did you use psychological/psychiatric services before the pandemic broke out?) Post-traumatic stress disorders
+(Did you use psychological/psychiatric services before the pandemic broke out?) Self-harming
+(Did you use psychological/psychiatric services before the pandemic broke out?) Addictions
+(Did you use psychological/psychiatric services before the pandemic broke out?) Other
+Did you use psychological/psychiatric services during the pandemic?
+Which is the most difficult for you in the current situation?
+What is your religious affiliation?
+How often do you attend church or other religious meetings?
+How often do you spend time in private religious activities, such as prayer, meditation or Bible study?
+In my life, I experience the presence of the Divine (i.e., God)
+My religious beliefs are what really lie behind my whole approach to life
+I try hard to carry my religion over into all other dealings in life
